@@ -1,0 +1,133 @@
+.date-spot-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.date-spot-list.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #f5d988;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.date-spot-list h2 {
+  margin: 0 0 30px 0;
+  color: #d4af37;
+  font-size: 1.8em;
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.spot-card {
+  background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-radius: 12px;
+  padding: 24px;
+  border: 2px solid #3a3a3a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s;
+}
+
+.spot-card:hover {
+  transform: translateY(-6px);
+  border-color: #d4af37;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.spot-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #3a3a3a;
+}
+
+.spot-card-header h3 {
+  margin: 0;
+  color: #d4af37;
+  font-size: 1.3em;
+  flex: 1;
+  word-break: break-word;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.delete-button {
+  background: linear-gradient(145deg, #c62828 0%, #8e0000 100%);
+  color: #ffffff;
+  border: 2px solid #8e0000;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  max-width: 36px;
+  max-height: 36px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(198, 40, 40, 0.3);
+  font-weight: 700;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button:hover {
+  background: linear-gradient(145deg, #e53935 0%, #c62828 100%);
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 4px 15px rgba(198, 40, 40, 0.5);
+}
+
+.delete-button:active {
+  transform: scale(1.05) rotate(90deg);
+}
+
+.spot-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spot-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95em;
+  color: #f5d988;
+  padding: 8px 0;
+}
+
+.info-label {
+  font-weight: 700;
+  color: #8b7220;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85em;
+}
+
+@media (max-width: 640px) {
+  .spot-grid {
+    grid-template-columns: 1fr;
+  }
+}
