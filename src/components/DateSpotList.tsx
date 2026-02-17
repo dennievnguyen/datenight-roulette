@@ -4,7 +4,7 @@ import './DateSpotList.css';
 export const DateSpotList = () => {
   const { dateSpots, removeDateSpot } = useDateSpotStore();
 
-  const handleDelete = (id: string, name: string) => {
+  const handleDelete = (id: string) => {
       removeDateSpot(id);
   };
 
@@ -26,7 +26,7 @@ export const DateSpotList = () => {
               <h3>{spot.name}</h3>
               <button
                 className="delete-button"
-                onClick={() => handleDelete(spot.id, spot.name)}
+                onClick={() => handleDelete(spot.id)}
                 aria-label="Delete"
               >
                 ×
