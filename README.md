@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# DateNight Roulette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Stop the "where do you want to go?" debate. DateNight Roulette is a web app that lets couples build a list of their favourite date spots and spin a roulette wheel to randomly pick one for the night.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Spinning Roulette Wheel** — A casino-styled wheel with animated spin. Each segment represents one of your saved date spots.
+- **Date Spot Management** — Add, view, and remove favourite venues from a settings page.
+- **Rich Venue Details** — Store the name, price range, neighbourhood, Google rating, and cuisine type for each spot.
+- **Result Card** — After the wheel lands, a card displays all the details of the selected venue.
+- **Respin & Reset** — Spin again from the result or reset the wheel to start fresh.
+- **Persistent Storage** — All date spots are automatically saved to browser `localStorage`, so your list survives page refreshes.
+- **Responsive Design** — Works on both desktop and mobile browsers.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Layer | Technology |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build Tool | Vite (rolldown-vite) |
+| Routing | React Router DOM 7 |
+| State Management | Zustand 5 (with persistence middleware) |
+| Styling | Custom CSS3 with CSS variables |
+| Linting | ESLint 9 + TypeScript-ESLint |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+No backend or database — the app runs entirely in the browser.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+**Prerequisites:** Node.js 18 or later.
+
+```bash
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Other Commands
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Build for production
+npm run build
+
+# Preview the production build locally
+npm run preview
+
+# Lint the codebase
+npm run lint
 ```
+
+---
+
+## Project Structure
+
+```
+datenight-roulette/
+├── src/
+│   ├── App.tsx                 # Root component and routing
+│   ├── pages/
+│   │   ├── MainPage.tsx        # Wheel and result display
+│   │   └── SettingsPage.tsx    # Add and manage date spots
+│   ├── components/
+│   │   ├── WheelSpinner.tsx    # Animated roulette wheel
+│   │   ├── DateSpotCard.tsx    # Result overlay card
+│   │   ├── SettingsForm.tsx    # Form for adding new spots
+│   │   └── DateSpotList.tsx    # List of saved spots
+│   └── store/
+│       └── dateSpotStore.ts    # Zustand store with localStorage persistence
+├── public/                     # Static assets
+└── index.html
+```
+
+---
+
+## How It Works
+
+1. Navigate to the **Settings** page and add your favourite date spots.
+2. Return to the main page and hit **Spin**.
+3. The wheel animates for 6 seconds and lands on a random spot.
+4. A card shows the full details of the selected venue.
+5. Choose to **Respin** or **Reset** and spin again.
+
+Date spots are stored under the `date-spot-storage` key in `localStorage`. No account or internet connection is required.
